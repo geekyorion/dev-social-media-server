@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const bodyparser = require('body-parser');
 const passport = require('passport');
 const helmet = require('helmet');
+const cors = require('cors');
 
 // import various api(s)
 const user = require('./routes/api/user');
@@ -48,6 +49,13 @@ app.use(passport.initialize());
 
 // passport config
 require('./config/passport')(passport);
+
+var corsOptions = {
+    origin: 'https://geekyorion.github.io/',
+    optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
 
 // API and routes definations
 app.get('/', (req, res) => {

@@ -50,12 +50,9 @@ app.use(passport.initialize());
 // passport config
 require('./config/passport')(passport);
 
-var corsOptions = {
-    origin: 'https://geekyorion.github.io/',
-    optionsSuccessStatus: 200
-};
-
-app.use(cors(corsOptions));
+app.use(cors({
+    origin: 'https://geekyorion.github.io'
+}));
 
 // API and routes definations
 app.get('/', (req, res) => {
